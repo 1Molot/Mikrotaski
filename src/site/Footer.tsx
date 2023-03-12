@@ -1,10 +1,10 @@
 import React from 'react';
 
-type HeaderType = {
+type FooterType = {
     title: string
 }
 
-export const Header = (props:HeaderType) => {
+export const Footer = (props:FooterType) => {
     return (
         <>{props.title}</>
     )
