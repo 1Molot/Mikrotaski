@@ -6,6 +6,8 @@ import {Body} from "./site/Body";
 import {Footer} from "./site/Footer";
 import {NewComponent} from "./NewComponent/NewComponent";
 import {TopCars} from "./TopCars/TopCars";
+import {Button} from "./components/Button";
+
 
 export type topCar = {
     manufacturer: string
@@ -14,24 +16,32 @@ export type topCar = {
 
 
 function App() {
- const myFirstSubscriber = () => {
-     console.log('Hello Im Maksim!')
- }
 
 
-    const topCars:topCar[] = [
-        {manufacturer:'BMW', model:'m5cs'},
-        {manufacturer:'Mercedes', model:'e63s'},
-        {manufacturer:'Audi', model:'rs6'}
+
+    const Button1Foo = (subscriber: string, age: number, address: string) => {
+        console.log(subscriber, age, address)
+    }
+    const Button2Foo = (subscriber: string) => {
+        console.log(subscriber)
+    }
+    const Button3Foo = (subscriber: string) => {
+        console.log('Im Stupid BUTTON')
+    }
+
+    const topCars: topCar[] = [
+        {manufacturer: 'BMW', model: 'm5cs'},
+        {manufacturer: 'Mercedes', model: 'e63s'},
+        {manufacturer: 'Audi', model: 'rs6'}
     ]
 
     let [students, setStudents] = useState([
-    {id:1, name: "James", age: 8},
-    {id:1, name: "Maksim", age: 8},
-    {id:1, name: "Patrick", age: 8},
-    {id:1, name: "Jam", age: 8},
-    {id:1, name: "Roma", age: 8},
-]);
+        {id: 1, name: "James", age: 8},
+        {id: 1, name: "Maksim", age: 8},
+        {id: 1, name: "Patrick", age: 8},
+        {id: 1, name: "Jam", age: 8},
+        {id: 1, name: "Roma", age: 8},
+    ]);
     return (
         <div className="App">
             <Header title={'NEW BODY'}/>
@@ -39,8 +49,12 @@ function App() {
             <Footer title={'NEW BODY'}/>
             <NewComponent students={students}/>
             <TopCars topCars={topCars}/>
-            <button onClick={myFirstSubscriber}>MyYouTubeChanel-1</button>
-            <button onClick={(event)=>{console.log('Hello')}}>MyYouTubeChanel-2</button>
+            {/*<button>MyYouTubeChanel-1</button>*/}
+            {/*<button>MyYouTubeChanel-2</button>*/}
+            <Button name={'MyYouTubeChanel-1'} callBack={() => Button1Foo('I am Vasya', 21, 'live in Minsk')}/>
+            <Button name={'MyYouTubeChanel-2'} callBack={() => Button2Foo
+            ('I am Ivan')}/>
+            {/*<Button name={'Stupid BUTTON'} callBack={Button3Foo}></Button>*/}
         </div>
     );
 }
