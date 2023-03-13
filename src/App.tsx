@@ -17,7 +17,11 @@ export type topCar = {
 
 function App() {
 
-
+    let [a, setA] = useState(1)
+    const onClickHandler = () => {
+        setA(++a);
+        console.log((a))
+    }
 
     const Button1Foo = (subscriber: string, age: number, address: string) => {
         console.log(subscriber, age, address)
@@ -55,6 +59,8 @@ function App() {
             <Button name={'MyYouTubeChanel-2'} callBack={() => Button2Foo
             ('I am Ivan')}/>
             {/*<Button name={'Stupid BUTTON'} callBack={Button3Foo}></Button>*/}
+            <h1>{a}</h1>
+            <button onClick={onClickHandler}></button>
         </div>
     );
 }
