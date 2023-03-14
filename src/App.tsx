@@ -9,6 +9,8 @@ import {TopCars} from "./TopCars/TopCars";
 import {Button} from "./components/Button";
 import {Banknots} from "./NewComponent/Banknots";
 import {FullInput} from "./components/FullInput";
+import {Input} from "./components/Input";
+import {ButtonButton} from "./components/ButtonButton";
 
 
 export type topCar = {
@@ -30,6 +32,13 @@ function App() {
         {message: 'message2'},
         {message: 'message3'},
     ])
+    let [title, setTitle] = useState('')
+
+
+    const addMessage=(title:string)=>{
+       let newMassage={message:title};
+        setMessage([newMassage,...message])
+    }
 
     let [a, setA] = useState(1)
     const onClickHandler = () => {
@@ -84,10 +93,16 @@ function App() {
     const onClickFilterHandler = (nameButton: FilterType) => {
         setFilter(nameButton)
     }
+    const callBackButtonHandler=()=>{
+        addMessage(title)
+        setTitle('')
+    }
     return (
 
         <div className="App">
-            <FullInput/>
+            {/*<FullInput addMessage={addMessage}/>*/}
+            <Input setTitle={setTitle} title={title}/>
+            <ButtonButton name={'+'} callBack={callBackButtonHandler}/>
             {message.map((el, index) => {
                 return (
                     <div key={index}>{el.message}</div>
